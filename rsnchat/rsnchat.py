@@ -28,3 +28,24 @@ class RsnChat:
 
     def llama(self, prompt):
         return self._make_request("llama", prompt)
+    
+    def mixtral(self, prompt):
+        return self._make_request("mixtral", prompt)
+
+    def prodia(self, prompt):
+        return self._make_request("prodia", prompt)
+    
+    def kandinsky(self, prompt):
+        return self._make_request("kandinsky", prompt)
+
+    def absolutebeauty(self, prompt):
+        return self._make_request("absolutebeauty", prompt)
+
+    def sdxl(self, prompt):
+        return self._make_request("sdxl", prompt)
+
+    def dalle(self, prompt):
+        return self._make_request("dalle", prompt)
+
+    def icon(self, prompt):
+        return self._make_request("icon", prompt)
