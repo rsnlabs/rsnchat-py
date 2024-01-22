@@ -260,4 +260,5 @@ response.then(
 
 ```
 
+
 ## The version 2.0.1 of the Python (PIP) package of the RSN-Chat is equivalent to the version 2.0.6 of the [RSN-Chat JavaScript (NPM) package](https://www.npmjs.com/package/rsnchat?activeTab=readme)
