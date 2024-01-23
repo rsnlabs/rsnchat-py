@@ -32,6 +32,9 @@ class RsnChat:
     def gemini(self, prompt):
         return self._make_request("gemini", prompt)
 
+    def codellama(self, prompt):
+        return self._make_request("codellama", prompt)
+
     def llama(self, prompt):
         return self._make_request("llama", prompt)
         
