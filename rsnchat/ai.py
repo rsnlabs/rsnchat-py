@@ -1,5 +1,6 @@
 import requests
 
+
 class RsnChat:
     def __init__(self, api_key):
         if not api_key:
@@ -10,6 +11,7 @@ class RsnChat:
     def _make_request(self, endpoint, prompt):
         url = f"{self._base_url}{endpoint}"
         headers = {"Authorization": f"Bearer {self.api_key}"}
+        
         payload = {"prompt": prompt}
         
         try:
@@ -31,6 +33,9 @@ class RsnChat:
 
     def gemini(self, prompt):
         return self._make_request("gemini", prompt)
+
+    def codellama(self, prompt):
+        return self._make_request("codellama", prompt)
 
     def llama(self, prompt):
         return self._make_request("llama", prompt)
@@ -55,3 +60,4 @@ class RsnChat:
 
     def icon(self, prompt):
         return self._make_request("icon", prompt)
+    
