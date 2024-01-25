@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+setup.py
+rsnchat/__init__.py
+rsnchat/main.py
+rsnchat.egg-info/PKG-INFO
+rsnchat.egg-info/SOURCES.txt
+rsnchat.egg-info/dependency_links.txt
+rsnchat.egg-info/requires.txt
+rsnchat.egg-info/top_level.txt
