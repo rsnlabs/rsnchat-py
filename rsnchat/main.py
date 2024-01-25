@@ -1,14 +1,14 @@
 import requests
 
-
 class RsnChat:
-    def __init__(self, api_key):
+    api_key: str
+    def __init__(self, api_key: str):
         if not api_key:
             raise ValueError("Please provide an API key")
         self.api_key = api_key
         self._base_url = "https://ai.rnilaweera.ovh/api/v1/user/"
 
-    def _make_request(self, endpoint, prompt):
+    def _make_request(self, endpoint: str, prompt: str):
         url = f"{self._base_url}{endpoint}"
         headers = {"Authorization": f"Bearer {self.api_key}"}
         
@@ -22,42 +22,42 @@ class RsnChat:
             error_message = response.json().get("error", {}).get("message", str(e))
             raise ValueError(f"Request failed: {error_message}")
 
-    def gpt(self, prompt):
+    def gpt(self, prompt: str):
         return self._make_request("gpt", prompt)
 
-    def openchat(self, prompt):
+    def openchat(self, prompt: str):
         return self._make_request("openchat", prompt)
 
-    def bard(self, prompt):
+    def bard(self, prompt: str):
         return self._make_request("bard", prompt)
 
-    def gemini(self, prompt):
+    def gemini(self, prompt: str):
         return self._make_request("gemini", prompt)
 
-    def codellama(self, prompt):
+    def codellama(self, prompt: str):
         return self._make_request("codellama", prompt)
 
-    def llama(self, prompt):
+    def llama(self, prompt: str):
         return self._make_request("llama", prompt)
         
-    def mixtral(self, prompt):
+    def mixtral(self, prompt: str):
         return self._make_request("mixtral", prompt)
 
-    def prodia(self, prompt):
+    def prodia(self, prompt: str):
         return self._make_request("prodia", prompt)
     
-    def kandinsky(self, prompt):
+    def kandinsky(self, prompt: str):
         return self._make_request("kandinsky", prompt)
 
-    def absolutebeauty(self, prompt):
+    def absolutebeauty(self, prompt: str):
         return self._make_request("absolutebeauty", prompt)
 
-    def sdxl(self, prompt):
+    def sdxl(self, prompt: str):
         return self._make_request("sdxl", prompt)
 
-    def dalle(self, prompt):
+    def dalle(self, prompt: str):
         return self._make_request("dalle", prompt)
 
-    def icon(self, prompt):
+    def icon(self, prompt: str):
         return self._make_request("icon", prompt)
     
