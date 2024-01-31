@@ -6,7 +6,7 @@ class RsnChat:
         if not api_key:
             raise ValueError("Please provide an API key")
         self.api_key = api_key
-        self._base_url = "https://ai.rnilaweera.ovh/api/v1/user/"
+        self._base_url = "https://api.rsnai.org/api/v1/user/"
 
     def _make_request(self, endpoint: str, prompt: str):
         url = f"{self._base_url}{endpoint}"
