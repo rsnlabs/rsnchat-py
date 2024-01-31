@@ -1,6 +1,6 @@
 # rsnchat
 
-This package package for interacting with GPT4-based chat services, OpenChat, Bard, Gemini, LlaMa, Mixtral, Prodia, Kandinsky, Absolutebeauty, Sdxl, Dalle and AI Icon without restrictions or limits
+This package package for interacting with GPT4-based chat services, OpenChat, Bard, Gemini, LlaMa, Mixtral, Claude, Prodia, Kandinsky, Absolutebeauty, Sdxl, Dalle and AI Icon without restrictions or limits
 
 ## Installation
 
@@ -15,7 +15,6 @@ pip install rsnchat
 Discord : [https://discord.gg/r5QWdKfQxr](https://discord.gg/r5QWdKfQxr)
 
 Join discord server and create account with **/new** slash command and get your apikey with **/key** slash command for free!
-
 
 ## Usage GPT4
 
@@ -260,5 +259,4 @@ response.then(
 
 ```
 
-
-## The version 2.0.1 of the Python (PIP) package of the RSN-Chat is equivalent to the version 2.0.6 of the [RSN-Chat JavaScript (NPM) package](https://www.npmjs.com/package/rsnchat?activeTab=readme)
+## The version 3.0.7 of the Python (PIP) package of the RSN-Chat is equivalent to the version 3.0.6 of the [RSN-Chat JavaScript (NPM) package](https://www.npmjs.com/package/rsnchat?activeTab=readme)
