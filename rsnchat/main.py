@@ -42,6 +42,9 @@ class RsnChat:
         
     def mixtral(self, prompt: str):
         return self._make_request("mixtral", prompt)
+    
+    def claude(self, prompt: str):
+        return self._make_request("claude", prompt)
 
     def prodia(self, prompt: str):
         return self._make_request("prodia", prompt)
