@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '3.0.6' 
+VERSION = '4.0.0' 
 DESCRIPTION = 'A package for interacting with GPT4-based chat services, OpenChat, Bard, Gemini, LlaMa, Mixtral, Prodia, Kandinsky, Absolutebeauty, Sdxl, Dalle and AI Icon'
 LONG_DESCRIPTION = open("README.md").read()
 
