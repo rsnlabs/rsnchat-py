@@ -1,20 +1,19 @@
 from setuptools import setup, find_packages
 
-VERSION = '4.0.0' 
-DESCRIPTION = 'A package for interacting with GPT4-based chat services, OpenChat, Bard, Gemini, LlaMa, Mixtral, Prodia, Kandinsky, Absolutebeauty, Sdxl, Dalle and AI Icon'
-LONG_DESCRIPTION = open("README.md").read()
+VERSION = "5.0.0-beta.1"
+DESCRIPTION = "A library for interaction with multiple AI models, such as GPT-4, Claude, Gemini, Llama, and others."
+with open("README.md", "r", encoding="utf-8") as f:
+    LONG_DESCRIPTION = f.read()
 
-# Setting up
 setup(
-  name="rsnchat", 
-  version=VERSION,
-  author="rnilaweera",
-  author_email="stacxdev@gmail.com",
-  description=DESCRIPTION,
-  long_description=LONG_DESCRIPTION,
-  long_description_content_type='text/markdown',
-  packages=find_packages(),
-  install_requires=["requests"],
-        
-  keywords=['python', 'first package'],
+    name="rsnchat",
+    version=VERSION,
+    author="rnilaweera",
+    author_email="stacxdev@gmail.com",
+    description=DESCRIPTION,
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
+    packages=find_packages(),
+    install_requires=["requests"],
+    keywords=["python", "first package"],
 )

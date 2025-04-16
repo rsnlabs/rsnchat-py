@@ -2,65 +2,82 @@ import requests
 
 class RsnChat:
     api_key: str
-    def __init__(self, api_key: str):
-        if not api_key:
-            raise ValueError("Please provide an API key")
-        self.api_key = api_key
-        self._base_url = "https://api.rnilaweera.lk/api/v1/user/"
 
-    def _make_request(self, endpoint: str, prompt: str):
-        url = f"{self._base_url}{endpoint}"
-        headers = {"Authorization": f"Bearer {self.api_key}"}
-        
-        payload = {"prompt": prompt}
-        
+    def __init__(self, api_key: str = None):
+        if api_key:
+            self.api_key = api_key
+        self._chat_base_url = "https://rsnlabs.ovh/api/chat/generate"
+        self._image_base_url = "https://rsnlabs.ovh/api/image/generate"
+        self._models_url = "https://rsnlabs.ovh/api/models"
+        self._character_generate_url = "https://rsnlabs.ovh/api/character/girls/generate"
+        self._valid_chat_models = None
+        self._valid_image_models = None
+        self._valid_character_models = None
+        self._load_models()
+
+    def _make_request(self, url: str, payload: dict = None, headers: dict = None):
         try:
-            response = requests.post(url, json=payload, headers=headers)
+            if payload:
+                response = requests.post(url, json=payload, headers=headers)
+            else:
+                response = requests.get(url, headers=headers)
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
-            error_message = response.json().get("error", {}).get("message", str(e))
-            raise ValueError(f"Request failed: {error_message}")
+            raise ValueError(f"Request failed: {str(e)}")
 
-    def gpt(self, prompt: str):
-        return self._make_request("gpt", prompt)
+    def _load_models(self):
 
-    def openchat(self, prompt: str):
-        return self._make_request("openchat", prompt)
+        try:
+            response = self._make_request(self._models_url)
+            self._valid_chat_models = [model["name"] for model in response.get("chat_models", [])]
+            self._valid_image_models = [model["name"] for model in response.get("image_models", [])]
+            self._valid_character_models = [model["name"] for model in response.get("girls_character_models", [])]
+        except ValueError as e:
+            raise ValueError(f"Failed to fetch models from API: {str(e)}")
 
-    def bard(self, prompt: str):
-        return self._make_request("bard", prompt)
+    def generate_chat_response(self, model: str, prompt: str):
 
-    def gemini(self, prompt: str):
-        return self._make_request("gemini", prompt)
+        if model not in self._valid_chat_models:
+            raise ValueError(f"Invalid chat model. Choose from: {', '.join(self._valid_chat_models)}")
 
-    def codellama(self, prompt: str):
-        return self._make_request("codellama", prompt)
+        payload = {
+            "model": model,
+            "prompt": prompt
+        }
+        headers = {
+            "Authorization": f"Bearer {self.api_key}"
+        }
+        return self._make_request(self._chat_base_url, payload, headers)
 
-    def llama(self, prompt: str):
-        return self._make_request("llama", prompt)
-        
-    def mixtral(self, prompt: str):
-        return self._make_request("mixtral", prompt)
-    
-    def claude(self, prompt: str):
-        return self._make_request("claude", prompt)
+    def generate_image(self, prompt: str, model: str = "default"):
 
-    def prodia(self, prompt: str):
-        return self._make_request("prodia", prompt)
-    
-    def kandinsky(self, prompt: str):
-        return self._make_request("kandinsky", prompt)
+        if model not in self._valid_image_models:
+            raise ValueError(f"Invalid image model. Choose from: {', '.join(self._valid_image_models)}")
 
-    def absolutebeauty(self, prompt: str):
-        return self._make_request("absolutebeauty", prompt)
+        payload = {
+            "prompt": prompt,
+            "model": model
+        }
+        headers = {
+            "Authorization": f"Bearer {self.api_key}"
+        }
+        return self._make_request(self._image_base_url, payload, headers)
 
-    def sdxl(self, prompt: str):
-        return self._make_request("sdxl", prompt)
+    def list_models(self):
 
-    def dalle(self, prompt: str):
-        return self._make_request("dalle", prompt)
+        return self._make_request(self._models_url)
 
-    def icon(self, prompt: str):
-        return self._make_request("icon", prompt)
-    
+    def generate_character_response(self, model: str, prompt: str):
+
+        if model not in self._valid_character_models:
+            raise ValueError(f"Invalid character model. Choose from: {', '.join(self._valid_character_models)}")
+
+        payload = {
+            "model": model,
+            "prompt": prompt
+        }
+        headers = {
+            "Authorization": f"Bearer {self.api_key}"
+        }
+        return self._make_request(self._character_generate_url, payload, headers)
